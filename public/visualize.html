@@ -5,14 +5,13 @@
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <img id="play" />
+    <img id="play" style="width: 720px;height: 480px;" />
     <div id="logger"></div>
   </body>
   <script type="text/javascript">
     var socket = io();
     socket.on('stream', function(image) {
       $('#play').attr('src', image);
-      $('#logger').text(image);
     });
   </script>
 </html>

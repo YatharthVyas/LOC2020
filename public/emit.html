@@ -19,8 +19,8 @@
     var canvas = document.getElementById('preview');
     var context = canvas.getContext('2d');
 
-    canvas.width = 900;
-    canvas.height = 700;
+    canvas.width = 300;
+    canvas.height = 250;
 
     context.width = canvas.width;
     context.height = canvas.height;
@@ -60,7 +60,10 @@
 
       if (navigator.getUserMedia) {
         navigator.getUserMedia(
-          { video: true, audio: false },
+          {
+            video: { width: { exact: 640 }, height: { exact: 480 } },
+            audio: true,
+          },
           loadCamera,
           loadFail
         );
