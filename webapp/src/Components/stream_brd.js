@@ -25,8 +25,8 @@ class Stream_BRD extends Component {
     var canvas = document.getElementById('preview');
     var context = canvas.getContext('2d');
 
-    canvas.width = 90;
-    canvas.height = 70;
+    canvas.width = 300;
+    canvas.height = 200;
 
     context.width = canvas.width;
     context.height = canvas.height;
@@ -56,7 +56,7 @@ class Stream_BRD extends Component {
       context.drawImage(video, 0, 0, context.width, context.height);
       if ($('#ip').val() != '') {
         socket.emit('stream', {
-          image: canvas.toDataURL('image/webp'),
+          image: canvas.toDataURL('image/jpeg', 0.8),
           id: $('#ip').val(),
         });
       }
