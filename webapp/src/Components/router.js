@@ -26,11 +26,14 @@ class RootRouter extends React.Component {
       console.log(e);
     }
   };
-
+  login = user => {
+    this.setState({ user: user, isLoggedIn: true });
+  };
   render() {
     return (
       <Provider
         value={{
+          login: this.login,
           state: this.state,
           setUser: this.setUser,
           logout: this.logout,
