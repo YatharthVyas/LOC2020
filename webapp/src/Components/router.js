@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Provider } from './context';
 import Login from './login';
 import NavBar from './navbar';
+import ChatApp from './chat';
 import Stream_RCV from './stream_rcv';
 import Stream_BRD from './stream_brd';
 import Axios from 'axios';
@@ -46,6 +47,7 @@ class RootRouter extends React.Component {
             <Route exact path='/BRD' component={Stream_BRD} />
             <Route exact path='/RCV' component={Stream_RCV} />
             <Route exact path='/login' component={Login} />
+            <Route exact path='/chat' component={ChatApp} />
           </Switch>
         </Router>
       </Provider>

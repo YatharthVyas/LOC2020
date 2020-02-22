@@ -11,15 +11,21 @@ import IconButton from '@material-ui/core/IconButton';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import MissedVideoCallIcon from '@material-ui/icons/MissedVideoCall';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
 import HomeIcon from '@material-ui/icons/Home';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Collapse from '@material-ui/core/Collapse';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import ChatIcon from '@material-ui/icons/Chat';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ForumIcon from '@material-ui/icons/Forum';
-import DescriptionIcon from '@material-ui/icons/Description';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import { NavLink } from 'react-router-dom';
@@ -61,7 +67,6 @@ function NavBar() {
   const [state, setState] = React.useState({
     left: false,
   });
-
   const toggleDrawer = (side, open) => event => {
     if (
       event.type === 'keydown' &&
