@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import RootRouter from './Components/router';
+import {MuiThemeProvider,createMuiTheme} from '@material-ui/core';
+import {deepPurple} from '@material-ui/core/colors';
 import './App.css';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: deepPurple,
+  },
+});
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+		<MuiThemeProvider theme={theme}>
+    		<RootRouter/>
+    	</MuiThemeProvider>
     </div>
   );
 }
