@@ -85,6 +85,13 @@ io.on('connection', function(socket) {
       );
     }
   });
+  socket.on('join-req', id => {
+    console.log(id);
+    socket.join(id);
+  });
+  socket.on('msg-sent', data => {
+    socket.to(data.ID).emit('msg-rcv', data);
+  });
 });
 
 http.listen(port, function() {
