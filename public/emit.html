@@ -14,6 +14,8 @@
 
     <canvas style="display:none;" id="preview"></canvas>
     <div id="logger"></div>
+    <input type="text" id="ip" />
+    <button id="btn"></button>
   </body>
   <script type="text/javascript">
     var canvas = document.getElementById('preview');
@@ -48,7 +50,12 @@
 
     function viewVideo(video, context) {
       context.drawImage(video, 0, 0, context.width, context.height);
-      socket.emit('stream', canvas.toDataURL('image/webp'));
+      if ($('#ip').val() != '') {
+        socket.emit('stream', {
+          image: canvas.toDataURL('image/webp'),
+          id: $('#ip').val(),
+        });
+      }
     }
 
     $(function() {
