@@ -1,3 +1,4 @@
+//In search, we will search by tags along with all the other searches
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
@@ -18,6 +19,7 @@ function Forum() {
  			case 'searchTopic': console.log("topic");break;
  			case 'searchSubject': console.log("Subject");break;
  			case 'searchQuestion': console.log("Question");break;
+ 			default: break;
  		}
 	}
 	return (

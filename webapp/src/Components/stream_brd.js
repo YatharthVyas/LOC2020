@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
 import Paper from '@material-ui/core/Paper';
@@ -55,7 +56,7 @@ class Stream_BRD extends Component {
       this.setState({
         message: [
           ...this.state.message,
-          { text: data.text, sender: data.sender == 'Change That' ? 0 : 1 },
+          { text: data.text, sender: data.sender === 'Change That' ? 0 : 1 },
         ],
       });
     });
@@ -171,6 +172,7 @@ class Stream_BRD extends Component {
                           align='right'
                           key={index}
                           style={{
+                            backgroundColor:'#a5d6a7',
                             border: '2px solid #d3d3d3',
                             borderRadius: '25px 0% 25px 25px',
                             padding: '10px',
@@ -196,6 +198,7 @@ class Stream_BRD extends Component {
                           align='left'
                           key={index}
                           style={{
+                            backgroundColor:'#42a5f5',
                             border: '2px solid #d3d3d3',
                             borderRadius: '0% 25px 25px 25px',
                             padding: '10px',
@@ -232,6 +235,20 @@ class Stream_BRD extends Component {
               InputProps={{
                 endAdornment: (
                   <React.Fragment>
+                  <InputAdornment position="end">
+                    <input
+                      accept="image/*"
+                      style={{display:'none'}}
+                      id="contained-button-file"
+                      multiple
+                      type="file"
+                    />
+                    <label htmlFor="contained-button-file">
+                      <IconButton fab variant="raised" component="span">
+                        <AttachFileIcon/>
+                      </IconButton>
+                   </label>
+                 </InputAdornment>
                     <InputAdornment position='end'>
                       <IconButton onClick={this.postMessage}>
                         <SendIcon />

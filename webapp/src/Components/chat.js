@@ -49,11 +49,13 @@ function ChatApp() {
           <List className={classes.root}>
           {users.map((data,key)=>(
             <React.Fragment key={key}>
+            <div>
               <ListItem key={key}>
                 <ListItemAvatar><Avatar style={{backgroundColor:'darkorange'}}> {data[0]}  </Avatar></ListItemAvatar>
                 <ListItemText> {data} </ListItemText>
               </ListItem>
               <Divider/>
+              </div>
               </React.Fragment>
             ))}
           </List>
@@ -65,7 +67,7 @@ function ChatApp() {
             <React.Fragment key={index}>
             {msg.sender===0?
               <React.Fragment key={index}>
-              <div align="right" key={index} style={{border:"2px solid #d3d3d3",borderRadius:"25px 0% 25px 25px",padding:'10px'}}>
+              <div align="right" key={index} style={{backgroundColor:'#a5d6a7',border:"2px solid #d3d3d3",borderRadius:"25px 0% 25px 25px",padding:'10px'}}>
                   <Typography style={{marginRight:'50px'}}>{msg.text}</Typography>  
                   <Avatar style={{backgroundColor:'green',marginRight:10}}>You</Avatar>
               </div>
@@ -73,8 +75,8 @@ function ChatApp() {
               </React.Fragment>
               :
               <React.Fragment>
-              <div align="left" key={index} style={{border:"2px solid #d3d3d3",borderRadius:"0% 25px 25px 25px",padding:'10px'}}>
-                  <Avatar style={{backgroundColor:'orange'}}>OP</Avatar>
+              <div align="left" key={index} style={{backgroundColor:'#42a5f5',border:"2px solid #d3d3d3",borderRadius:"0% 25px 25px 25px",padding:'10px'}}>
+                  <Avatar style={{backgroundColor:'darkblue'}}>OP</Avatar>
                  <Typography style={{marginLeft:'40px'}}>{msg.text}</Typography> 
               </div>
               <br/>
@@ -103,9 +105,18 @@ function ChatApp() {
           endAdornment: (
             <React.Fragment>
             <InputAdornment position="end">
-              <IconButton>
+            <input
+              accept="image/*"
+              style={{display:'none'}}
+              id="contained-button-file"
+              multiple
+              type="file"
+            />
+            <label htmlFor="contained-button-file">
+              <IconButton fab variant="raised" component="span">
                 <AttachFileIcon/>
-                </IconButton>
+              </IconButton>
+           </label>
             </InputAdornment>
             <InputAdornment position="end">
               <IconButton onClick={postMessage}>

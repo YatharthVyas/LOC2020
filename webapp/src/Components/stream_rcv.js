@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import SendIcon from '@material-ui/icons/Send';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import $ from 'jquery';
 class Stream_RCV extends Component {
   constructor(props) {
     super(props);
@@ -22,8 +20,8 @@ class Stream_RCV extends Component {
       oldid: null,
       text: '',
       message: [
-        { text: 'Test', sender: 1 },
-        { text: 'Yeah', sender: 0 },
+        { text: 'Test', sender: 0 },
+        { text: 'Yeah', sender: 1 },
       ],
     };
   }
@@ -46,7 +44,7 @@ class Stream_RCV extends Component {
       this.setState({
         message: [
           ...this.state.message,
-          { text: data.text, sender: data.sender == 'Change This' ? 0 : 1 },
+          { text: data.text, sender: data.sender === 'Change This' ? 0 : 1 },
         ],
       });
     });
@@ -89,15 +87,16 @@ class Stream_RCV extends Component {
         <div style={{ display: 'flex' }}>
           <div style={{ flex: '50%' }}>
             <img
+              alt="Video Chat"
               src={this.state.data}
               style={{ width: '720px', height: '480px' }}
             ></img>
             <br></br>
             <br />
-            <input onChange={this.handleChange} name='ID' type='text'></input>
+            <input onChange={this.handleChange} name='ID' type='text' style={{height:35,borderRadius:5,border:"1px solid lightgrey",padding:5}}></input>
             <button
               onClick={this.startStream}
-              style={{ marginLeft: 10, height: 55, width: 100 }}
+              style={{ marginLeft: 10, height: 45, width: 100, backgroundColor:'#651fff',color:'white',border:'1px solid black',borderRadius:5 }}
             >
               Start
             </button>
@@ -113,6 +112,7 @@ class Stream_RCV extends Component {
                           align='right'
                           key={index}
                           style={{
+                            backgroundColor:'#a5d6a7',
                             border: '2px solid #d3d3d3',
                             borderRadius: '25px 0% 25px 25px',
                             padding: '10px',
@@ -138,6 +138,7 @@ class Stream_RCV extends Component {
                           align='left'
                           key={index}
                           style={{
+                            backgroundColor:'#42a5f5',
                             border: '2px solid #d3d3d3',
                             borderRadius: '0% 25px 25px 25px',
                             padding: '10px',
@@ -174,6 +175,20 @@ class Stream_RCV extends Component {
               InputProps={{
                 endAdornment: (
                   <React.Fragment>
+                  <InputAdornment position="end">
+                    <input
+                      accept="image/*"
+                      style={{display:'none'}}
+                      id="contained-button-file"
+                      multiple
+                      type="file"
+                    />
+                    <label htmlFor="contained-button-file">
+                      <IconButton fab variant="raised" component="span">
+                        <AttachFileIcon/>
+                      </IconButton>
+                   </label>
+                  </InputAdornment>
                     <InputAdornment position='end'>
                       <IconButton onClick={this.postMessage}>
                         <SendIcon />
