@@ -1,5 +1,9 @@
 import React from 'react';
 import {Typography,AppBar,Button,MenuItem,Tabs,Tab,Grid,Box,makeStyles,TextField} from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import {Formik,Form} from 'formik';
 import Axios from 'axios';
 import {Redirect} from 'react-router-dom'
@@ -58,6 +62,10 @@ export default function LoginPage(){
 	const setVFunc = (event) => {
     	setLog(true);
 	};
+	const [showPassword, setShowPassword] = React.useState(0);
+	function togglePassword(){
+		showPassword===0?setShowPassword(1):setShowPassword(0);
+	}
     return (
     	<div>
 			{(isLogged && isV) ? <Redirect to='/v_home' />:null}
@@ -115,6 +123,7 @@ export default function LoginPage(){
 				    	<Form autoComplete="off"> 
 				        	<TextField 
 				        		name="username"
+				        		style = {{width: 300}}
 				        		label="Username" 
 				        		variant="outlined" 
 				        		placeholder="Enter your Username"
@@ -125,6 +134,7 @@ export default function LoginPage(){
 				        	/> <br/>
 				        	<TextField 
 				        		name="password" 
+				        		style = {{width: 300}}
 				        		type="password" 
 				        		label="Password" 
 				        		variant="outlined" 
@@ -134,6 +144,18 @@ export default function LoginPage(){
 				        		className={classes.textf}
 				        		onChange={handleChange}
 				        		onBlur={handleBlur}
+				        		InputProps={{
+						          endAdornment: (
+						            <InputAdornment position="end">
+						            	<IconButton
+						                  aria-label="toggle password visibility"
+						                  onClick={togglePassword}
+						                >
+						              	{showPassword ? <Visibility /> : <VisibilityOff />}
+						              	</IconButton>
+						            </InputAdornment>
+						          ),
+						        }}
 				        	/> <br/>
 				        	<Button 
 				        		type="submit" 

@@ -142,7 +142,7 @@ function NavBar() {
                 <Divider />
                 <NavLink
                         className={classes.link}
-                        to='/'
+                        to='/chat'
                     >
                 <ListItem button>
                         <ListItemIcon>
@@ -193,7 +193,7 @@ function NavBar() {
                             <NavLink
                             className={classes.linkHeader}
                             to='/'
-                         ><Typography variant='h4'>Masters Information Portal</Typography>
+                         ><Typography variant='h4'>Student Information Portal</Typography>
                         </NavLink>
                         </Typography>
                         {
