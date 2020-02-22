@@ -1,0 +1,18 @@
+{
+  "name": "loc2020",
+  "version": "1.0.0",
+  "description": "LOC Hackathon Project repository of Proxima Centauri Team.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
