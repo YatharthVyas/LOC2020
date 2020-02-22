@@ -4,7 +4,8 @@
   "description": "LOC Hackathon Project repository of Proxima Centauri Team.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "start": "node index"
   },
   "author": "",
   "license": "MIT",
