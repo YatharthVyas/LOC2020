@@ -34,7 +34,7 @@ function ChatApp() {
   const textEdit = (e) =>{
     setText(e.target.value);
   }
-  const users=['Me','You','They','Ley','Brock','Example','ACM','Siddharth Salvi','Shrey','Yashodhan'];
+  const users=['Karan','Mohit','Vatsal','Tejas','Sarvesh','Rahil','Caren','Siddharth','Shrey','Yashodhan'];
   const [Message,sendMessage]=React.useState([{text:'Test',sender:1},{text:'Yeah',sender:0}]); //sender id = 0 for me and any other id for other user
   const postMessage = () =>{
     if(text!==''){
