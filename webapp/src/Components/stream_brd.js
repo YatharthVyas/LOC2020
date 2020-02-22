@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script src="./jQuery.js"></script>
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-  </head>
-  <body>
-    <video
-      src=""
-      id="video"
-      style="width:700px; height: 350px;"
-      autoplay="true"
-    ></video>
+import React, { Component } from 'react';
+import socketIOClient from 'socket.io-client';
+import $ from 'jquery';
 
-    <canvas style="display:none;" id="preview"></canvas>
-    <div id="logger"></div>
-    <input type="text" id="ip" />
-    <button id="btn"></button>
-  </body>
-  <script type="text/javascript">
+class Stream_BRD extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      socket: null,
+      data: null,
+      endpoint: 'http://192.168.225.219:5000',
+      ID: null,
+      oldid: null,
+    };
+  }
+  componentDidMount() {
+    const { endpoint } = this.state;
+
+    const socket = socketIOClient(endpoint);
+
+    socket.on('stream', data => this.setState({ data: data }));
+    this.setState({ ...this.state, socket: socket });
+  }
+  startStream = e => {
     var canvas = document.getElementById('preview');
     var context = canvas.getContext('2d');
 
@@ -29,7 +33,7 @@
 
     var video = document.getElementById('video');
 
-    var socket = io('/');
+    var socket = this.state.socket;
 
     function logger(msg) {
       $('#logger').text(msg);
@@ -41,11 +45,11 @@
       } catch (error) {
         video.src = URL.createObjectURL(stream);
       }
-      logger('Camera connected');
+      //logger('Camera connected');
     }
 
     function loadFail() {
-      logger('Camera not connected');
+      //logger('Camera not connected');
     }
 
     function viewVideo(video, context) {
@@ -80,5 +84,26 @@
         viewVideo(video, context);
       }, 5);
     });
-  </script>
-</html>
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <video
+          src=''
+          id='video'
+          style={{ width: '700px', height: '350px' }}
+          autoPlay={true}
+        ></video>
+
+        <canvas style={{ display: 'none' }} id='preview'></canvas>
+        <div id='logger'></div>
+        <input type='text' id='ip' />
+        <button id='btn' onClick={this.startStream}>
+          Start
+        </button>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Stream_BRD;
