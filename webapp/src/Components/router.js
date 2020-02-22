@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Provider } from './context';
 import Login from './login';
+import Forum from './forum';
 import NavBar from './navbar';
 import ChatApp from './chat';
 import Stream_RCV from './stream_rcv';
@@ -48,6 +49,7 @@ class RootRouter extends React.Component {
             <Route exact path='/RCV' component={Stream_RCV} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/chat' component={ChatApp} />
+            <Route exact path='/forum' component={Forum} />
           </Switch>
         </Router>
       </Provider>

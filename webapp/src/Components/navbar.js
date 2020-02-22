@@ -116,7 +116,7 @@ function NavBar() {
             <NavLink className={classes.link} to='/profile'>
               <ListItem button>
                 <ListItemIcon>
-                  <AccountCircleIcon />
+                  <AccountCircleIcon/>
                 </ListItemIcon>
                 <Typography>Profile</Typography>
               </ListItem>
@@ -124,19 +124,19 @@ function NavBar() {
             <Divider />
           </React.Fragment>
         )}
-        <NavLink className={classes.link} to='/'>
+        <NavLink className={classes.link} to='/forum'>
           <ListItem button>
             <ListItemIcon>
-              <ForumIcon />
+              <ForumIcon/>
             </ListItemIcon>
             <Typography>Forum</Typography>
           </ListItem>
         </NavLink>
-        <Divider />
-        <NavLink className={classes.link} to='/'>
+        <Divider/>                                                                              
+        <NavLink className={classes.link} to='/chat'>
           <ListItem button>
             <ListItemIcon>
-              <ChatIcon />
+              <ChatIcon/>
             </ListItemIcon>
             <Typography>Chat</Typography>
           </ListItem>
