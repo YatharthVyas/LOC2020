@@ -78,7 +78,7 @@ class Stream_BRD extends Component {
 
     function viewVideo(video, context) {
       context.drawImage(video, 0, 0, context.width, context.height);
-      if ($('#ip').val() != '') {
+      if ($('#ip').val() !== '') {
         socket.emit('stream', {
           image: canvas.toDataURL('image/jpeg', 0.8),
           id: $('#ip').val(),
