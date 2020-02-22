@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="./jQuery.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   </head>
   <body>
@@ -14,20 +14,22 @@
 
     <canvas style="display:none;" id="preview"></canvas>
     <div id="logger"></div>
+    <input type="text" id="ip" />
+    <button id="btn"></button>
   </body>
   <script type="text/javascript">
     var canvas = document.getElementById('preview');
     var context = canvas.getContext('2d');
 
-    canvas.width = 300;
-    canvas.height = 250;
+    canvas.width = 90;
+    canvas.height = 70;
 
     context.width = canvas.width;
     context.height = canvas.height;
 
     var video = document.getElementById('video');
 
-    var socket = io();
+    var socket = io('/');
 
     function logger(msg) {
       $('#logger').text(msg);
@@ -48,7 +50,12 @@
 
     function viewVideo(video, context) {
       context.drawImage(video, 0, 0, context.width, context.height);
-      socket.emit('stream', canvas.toDataURL('image/webp'));
+      if ($('#ip').val() != '') {
+        socket.emit('stream', {
+          image: canvas.toDataURL('image/webp'),
+          id: $('#ip').val(),
+        });
+      }
     }
 
     $(function() {

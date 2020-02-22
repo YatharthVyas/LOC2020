@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="./jQuery.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <img id="play" style="width: 720px;height: 480px;" />
     <div id="logger"></div>
+    <input type="text" id="ip" />
+    <button id="btn">GO!</button>
   </body>
   <script type="text/javascript">
-    var socket = io();
+    var socket = io('/');
+    $('#btn').click(function(e) {
+      e.preventDefault();
+      console.log($('#ip').val());
+      socket.emit('recv-login', $('#ip').val());
+    });
     socket.on('stream', function(image) {
       $('#play').attr('src', image);
     });

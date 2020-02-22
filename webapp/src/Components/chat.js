@@ -54,16 +54,18 @@ function ChatApp() {
           {Message.map((msg,index)=>(
             <React.Fragment>
             {msg.sender===0?
-              <div align="right" >
+              <div align="right" style={{border:"2px solid black",borderRadius:"20% 0% 20% 20%"}}>
                   <Typography>{msg.text}</Typography>  
                   <Avatar style={{backgroundColor:'green',marginRight:0}}>You</Avatar>
+                  <Divider/>
               </div>
               :
-              <div width="80%" style={{backgroundColor:"#ECCCCF"}}>
+              <div width="80%" >
                 <ListItem key={index}>
                   <Avatar style={{backgroundColor:'orange'}}>OP</Avatar>
                  <Typography>{msg.text}</Typography>  
                  </ListItem>
+                 <Divider/>
               </div>
             }
             </React.Fragment>
