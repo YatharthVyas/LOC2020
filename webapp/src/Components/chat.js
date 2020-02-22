@@ -23,22 +23,32 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   chatBox: {
-    height: '90%'
+    height: '74vh',
+    overflow: 'auto'
   },
 }));
 
 function ChatApp() {
   const classes = useStyles();
+  const [text,setText]=React.useState('');
+  const textEdit = (e) =>{
+    setText(e.target.value);
+  }
   const users=['Me','You','They','Ley','Brock','Example','ACM','Siddharth Salvi','Shrey','Yashodhan'];
-  const [Message,sendMessage]=React.useState([{text:'Test',sender:1},{text:'Yeah, ',sender:0}]); //sender id = 0 for me and any other id for other user
-
+  const [Message,sendMessage]=React.useState([{text:'Test',sender:1},{text:'Yeah',sender:0}]); //sender id = 0 for me and any other id for other user
+  const postMessage = () =>{
+    if(text!==''){
+      sendMessage([...Message,{text:text,sender:0}]);
+      setText('');
+    }
+  }
   return (
     <Box>
   		<Grid container spacing={0}>
         <Grid item xs={4}>
           <List className={classes.root}>
           {users.map((data,key)=>(
-            <React.Fragment>
+            <React.Fragment key={key}>
               <ListItem key={key}>
                 <ListItemAvatar><Avatar style={{backgroundColor:'darkorange'}}> {data[0]}  </Avatar></ListItemAvatar>
                 <ListItemText> {data} </ListItemText>
@@ -49,24 +59,26 @@ function ChatApp() {
           </List>
         </Grid>
         <Grid item xs={8}>
-        <Paper fullWidth className={classes.chatBox}>
+        <Paper className={classes.chatBox}>
         <List>
           {Message.map((msg,index)=>(
-            <React.Fragment>
+            <React.Fragment key={index}>
             {msg.sender===0?
-              <div align="right" style={{border:"2px solid black",borderRadius:"20% 0% 20% 20%"}}>
-                  <Typography>{msg.text}</Typography>  
-                  <Avatar style={{backgroundColor:'green',marginRight:0}}>You</Avatar>
-                  <Divider/>
+              <React.Fragment key={index}>
+              <div align="right" key={index} style={{border:"2px solid #d3d3d3",borderRadius:"25px 0% 25px 25px",padding:'10px'}}>
+                  <Typography style={{marginRight:'50px'}}>{msg.text}</Typography>  
+                  <Avatar style={{backgroundColor:'green',marginRight:10}}>You</Avatar>
               </div>
+              <br/>
+              </React.Fragment>
               :
-              <div width="80%" >
-                <ListItem key={index}>
+              <React.Fragment>
+              <div align="left" key={index} style={{border:"2px solid #d3d3d3",borderRadius:"0% 25px 25px 25px",padding:'10px'}}>
                   <Avatar style={{backgroundColor:'orange'}}>OP</Avatar>
-                 <Typography>{msg.text}</Typography>  
-                 </ListItem>
-                 <Divider/>
+                 <Typography style={{marginLeft:'40px'}}>{msg.text}</Typography> 
               </div>
+              <br/>
+              </React.Fragment> 
             }
             </React.Fragment>
             ))
@@ -76,10 +88,17 @@ function ChatApp() {
         <TextField
           type="text"
           fullWidth
+          value={text}
           style={{marginTop:10}}
           variant="outlined"
           className="compose-input"
-          placeholder="Type a message, @name"
+          placeholder="Type a message"
+          onChange={textEdit}
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+                postMessage();
+            }
+          }}
           InputProps={{
           endAdornment: (
             <React.Fragment>
@@ -89,7 +108,7 @@ function ChatApp() {
                 </IconButton>
             </InputAdornment>
             <InputAdornment position="end">
-              <IconButton>
+              <IconButton onClick={postMessage}>
                 <SendIcon/>
                 </IconButton>
             </InputAdornment>
