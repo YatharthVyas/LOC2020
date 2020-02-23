@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
+import $ from 'jquery';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { Formik, Form } from 'formik';
 
 function Event() {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [arrEvents, setEvents] = React.useState([]);
+  useEffect(() => {
+    $.get('http://localhost:5000/events')
+      .done(data => {
+        setIsLoading(false);
+        setEvents(data);
+      })
+      .fail(e => {
+        setIsLoading(false);
+        console.log(e);
+      });
+  });
+  //===================================================
   return (
     <React.Fragment>
       <Typography variant='h3'>Schedule a Lecture</Typography>
@@ -22,12 +44,23 @@ function Event() {
           setTimeout(() => {
             setSubmitting(false);
           }, 1000);
-          $.post('http://localhost:5000/events', {
+          setIsLoading(true);
+          let obj = {
             user: 'TestUser',
             time: values.time,
             date: values.date,
-            callId: value.call_id,
-          });
+            subject: values.topic,
+            callId: values.call_id,
+          };
+          $.post('http://localhost:5000/events', obj)
+            .done(data => {
+              setIsLoading(false);
+              setEvents([obj, ...arrEvents]);
+            })
+            .fail(e => {
+              setIsLoading(false);
+              console.log(e);
+            });
         }}
       >
         {({ isSubmitting, handleChange, handleBlur, values }) => (
@@ -97,6 +130,36 @@ function Event() {
         )}
       </Formik>
       <Divider style={{ width: '80vw', marginLeft: '10vw' }} />
+      <List>
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          arrEvents.map((val, index) => (
+            <ListItem key={index}>
+              {
+                <Card>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label='recipe'>
+                        {val.user.toUpperCase()[0]}
+                      </Avatar>
+                    }
+                  />
+
+                  <CardContent>
+                    <Typography variant='h4' color='textPrimary' component='p'>
+                      {val.subject}
+                    </Typography>
+                    <div> Date : {val.date}</div>
+                    <div>Time : {val.time}</div>
+                    <div>Call Id : {val.callId}</div>
+                  </CardContent>
+                </Card>
+              }
+            </ListItem>
+          ))
+        )}
+      </List>
     </React.Fragment>
   );
 }

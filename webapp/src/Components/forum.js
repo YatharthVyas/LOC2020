@@ -1,5 +1,5 @@
 //In search, we will search by tags along with all the other searches
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import { Formik, Form } from 'formik';
@@ -22,26 +22,7 @@ function Forum() {
   const [array, setArray] = React.useState([]);
   const [stopic, setstopic] = useState([]);
   const [ssub, setssub] = useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [arrEvents,setEvents] = React.useState([]);
-  useEffect(() => {
-    fetch(
-      `https://api.github.com/search/commits?q=repo:facebook/react+css&page`,
-      {
-        method: "GET",
-        headers: new Headers({
-          Accept: "application/vnd.github.cloak-preview"
-        })
-      }
-    )
-      .then(res => res.json())
-      .then(response => {
-        setEvents(response.items);
-        setIsLoading(false);
-      })
-      .catch(error => console.log(error));
-  });
-  //===================================================
+
   const [sq, setsq] = useState([]);
   const handleSearch = type => {
     switch (type) {
@@ -321,19 +302,6 @@ function Forum() {
             )}
           </Formik>
         </Box>
-        <List>
-        {isLoading?
-    		<CircularProgress />
-        	:
-        	arrEvents.map((eventName,index)=>(
-    			<ListItem key={index}>
-    				{/* insert card here */}
-    			</ListItem>
-        	))
-        	
-
-        }
-        </List>
       </div>
     </React.Fragment>
   );

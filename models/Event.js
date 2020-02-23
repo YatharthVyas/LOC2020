@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const EventSchema = new Schema(
   {
     user: { type: String, required: true },
+    subject: { type: String },
     time: { type: String },
     date: { type: String },
     callId: { type: String },
