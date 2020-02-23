@@ -67,7 +67,7 @@ var FQANS = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    $.post('http://localhost:5000/forumA', {
+    $.post('http://192.168.225.219:5000/forumA', {
       ID: props.location.state.wq.ID,
       Ans: value,
       user: 'testU',

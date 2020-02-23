@@ -18,7 +18,7 @@ function Event() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [arrEvents, setEvents] = React.useState([]);
   useEffect(() => {
-    $.get('http://localhost:5000/events')
+    $.get('http://192.168.225.219:5000/events')
       .done(data => {
         setIsLoading(false);
         setEvents(data);
@@ -52,7 +52,7 @@ function Event() {
             subject: values.topic,
             callId: values.call_id,
           };
-          $.post('http://localhost:5000/events', obj)
+          $.post('http://192.168.225.219:5000/events', obj)
             .done(data => {
               setIsLoading(false);
               setEvents([obj, ...arrEvents]);
@@ -131,34 +131,46 @@ function Event() {
       </Formik>
       <Divider style={{ width: '80vw', marginLeft: '10vw' }} />
       <List>
-        {isLoading ? (
-          <CircularProgress />
-        ) : (
-          arrEvents.map((val, index) => (
-            <ListItem key={index}>
-              {
-                <Card>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label='recipe'>
-                        {val.user.toUpperCase()[0]}
-                      </Avatar>
-                    }
-                  />
+        <Grid container xs={12} spacing={2}>
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            arrEvents.map((val, index) => (
+              <ListItem key={index}>
+                {
+                  <>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={6}>
+                      <Card>
+                        <CardHeader
+                          style={{ paddingLeft: '15vw' }}
+                          avatar={
+                            <Avatar aria-label='recipe'>
+                              {val.user.toUpperCase()[0]}
+                            </Avatar>
+                          }
+                        />
 
-                  <CardContent>
-                    <Typography variant='h4' color='textPrimary' component='p'>
-                      {val.subject}
-                    </Typography>
-                    <div> Date : {val.date}</div>
-                    <div>Time : {val.time}</div>
-                    <div>Call Id : {val.callId}</div>
-                  </CardContent>
-                </Card>
-              }
-            </ListItem>
-          ))
-        )}
+                        <CardContent style={{ paddingLeft: '20vw' }}>
+                          <Typography
+                            variant='h4'
+                            color='textPrimary'
+                            component='p'
+                          >
+                            {val.subject}
+                          </Typography>
+                          <div> Date : {val.date}</div>
+                          <div>Time : {val.time}</div>
+                          <div>Call Id : {val.callId}</div>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  </>
+                }
+              </ListItem>
+            ))
+          )}
+        </Grid>
       </List>
     </React.Fragment>
   );
