@@ -25,7 +25,7 @@ function Forum() {
   const handleSearch = type => {
     switch (type) {
       case 'searchTopic':
-        $.get('http://localhost:5000/getQTopic', { val: stopic })
+        $.get('http://192.168.225.219:5000/getQTopic', { val: stopic })
           .done(data => {
             console.log(data);
             setArray(data);
@@ -36,7 +36,7 @@ function Forum() {
 
         break; //setArray will fetch from backend
       case 'searchSubject':
-        $.get('http://localhost:5000/getQSubj', { val: ssub })
+        $.get('http://192.168.225.219:5000/getQSubj', { val: ssub })
           .done(data => {
             setArray(data);
           })
@@ -45,7 +45,7 @@ function Forum() {
           });
         break;
       case 'searchQuestion':
-        $.get('http://localhost:5000/getQ', { val: sq })
+        $.get('http://192.168.225.219:5000/getQ', { val: sq })
           .done(data => {
             console.log(data);
             setArray(data);
@@ -190,7 +190,7 @@ function Forum() {
               t.push(values.topic);
               try {
                 console.log(t);
-                $.post('http://localhost:5000/forumQ', {
+                $.post('http://192.168.225.219:5000/forumQ', {
                   Q: values.question,
                   test: JSON.stringify(t),
                   subject: values.subject,

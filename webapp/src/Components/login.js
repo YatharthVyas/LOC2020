@@ -103,7 +103,7 @@ export default function LoginPage() {
                     setSubmitting(false);
                   }, 1000);
                   try {
-                    $.post('http://localhost:5000/signin', {
+                    $.post('http://192.168.225.219:5000/signin', {
                       email: values.email,
                       password: values.password,
                     })
@@ -223,7 +223,7 @@ export default function LoginPage() {
                   if (values.loginAs !== 'Institute')
                     values.name = values.fname + ' ' + values.lname;
                   try {
-                    $.post('http://localhost:5000/register', {
+                    $.post('http://192.168.225.219:5000/register', {
                       name: values.name,
                       contact_n: values.contact_n,
                       email: values.username,
