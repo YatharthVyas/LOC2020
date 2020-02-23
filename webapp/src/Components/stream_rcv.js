@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
-import SendIcon from '@material-ui/icons/Send';
-import InputAdornment from '@material-ui/core/InputAdornment';
+
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 class Stream_RCV extends Component {
@@ -19,10 +16,7 @@ class Stream_RCV extends Component {
       ID: null,
       oldid: null,
       text: '',
-      message: [
-        { text: 'Test', sender: 0 },
-        { text: 'Yeah', sender: 1 },
-      ],
+      message: [],
     };
   }
   textEdit = e => {
@@ -100,19 +94,19 @@ class Stream_RCV extends Component {
               style={{
                 height: 35,
                 borderRadius: 5,
-                border: '1px solid lightgrey',
+                boreder: '1px solid lightgray',
                 padding: 5,
               }}
             ></input>
             <button
               onClick={this.startStream}
               style={{
-                marginLeft: 10,
                 height: 45,
                 width: 100,
+                marginLeft: 10,
                 backgroundColor: '#651fff',
                 color: 'white',
-                border: '1px solid black',
+                boreder: '1px solid black',
                 borderRadius: 5,
               }}
             >
@@ -189,31 +183,6 @@ class Stream_RCV extends Component {
                 if (event.key === 'Enter') {
                   this.postMessage();
                 }
-              }}
-              InputProps={{
-                endAdornment: (
-                  <React.Fragment>
-                    <InputAdornment position='end'>
-                      <input
-                        accept='image/*'
-                        style={{ display: 'none' }}
-                        id='contained-button-file'
-                        multiple
-                        type='file'
-                      />
-                      <label htmlFor='contained-button-file'>
-                        <IconButton fab variant='raised' component='span'>
-                          <AttachFileIcon />
-                        </IconButton>
-                      </label>
-                    </InputAdornment>
-                    <InputAdornment position='end'>
-                      <IconButton onClick={this.postMessage}>
-                        <SendIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  </React.Fragment>
-                ),
               }}
             />
           </div>

@@ -23,10 +23,7 @@ class Stream_BRD extends Component {
       ID: null,
       oldid: null,
       text: '',
-      message: [
-        { text: 'Test', sender: 1 },
-        { text: 'Yeah', sender: 0 },
-      ],
+      message: [],
     };
   }
 
