@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MissedVideoCallIcon from '@material-ui/icons/MissedVideoCall';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import HomeIcon from '@material-ui/icons/Home';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -149,7 +150,6 @@ function NavBar() {
             <Divider variant="inset"/>
             <NavLink className={classes.link} to='/BRD'>
               <ListItem button>
-              <ListItemIcon/>
                 <ListItemIcon>
                     <VideoCallIcon/>
                 </ListItemIcon>
@@ -159,11 +159,19 @@ function NavBar() {
             <Divider variant="inset"/>
             <NavLink className={classes.link} to='/RCV'>
               <ListItem button>
-              <ListItemIcon/>
                 <ListItemIcon>
                     <MissedVideoCallIcon/>
                 </ListItemIcon>
                 <ListItemText primary="Learn!" />
+              </ListItem>
+            </NavLink>
+            <Divider variant="inset"/>
+            <NavLink className={classes.link} to='/announce'>
+              <ListItem button>
+                <ListItemIcon>
+                    <EventAvailableIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Plan a Lecture" />
               </ListItem>
             </NavLink>
             </List>
