@@ -75,7 +75,7 @@ function NavBar() {
     setState({ ...state, [side]: open });
   };
   const [loggedIn, setLoggedIn] = useState(0);
-
+  setLoggedIn(loggedIn);
   const sideList = side => (
     <div
       className={classes.list}

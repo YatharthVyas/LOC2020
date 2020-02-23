@@ -77,9 +77,9 @@ class Stream_BRD extends Component {
 
     var socket = this.state.socket;
 
-    function logger(msg) {
-      $('#logger').text(msg);
-    }
+    // function logger(msg) {
+    //   $('#logger').text(msg);
+    // }
 
     function loadCamera(stream) {
       try {

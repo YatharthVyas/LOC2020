@@ -1,5 +1,5 @@
 //In search, we will search by tags along with all the other searches
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import { Formik, Form } from 'formik';
@@ -15,7 +15,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { Redirect } from 'react-router-dom';
 import $ from 'jquery';
 function Forum() {
   const [array, setArray] = React.useState([]);
