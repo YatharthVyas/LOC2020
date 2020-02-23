@@ -23,10 +23,7 @@ class Stream_BRD extends Component {
       ID: null,
       oldid: null,
       text: '',
-      message: [
-        { text: 'Test', sender: 1 },
-        { text: 'Yeah', sender: 0 },
-      ],
+      message: [],
     };
   }
 
@@ -172,7 +169,7 @@ class Stream_BRD extends Component {
                           align='right'
                           key={index}
                           style={{
-                            backgroundColor:'#a5d6a7',
+                            backgroundColor: '#a5d6a7',
                             border: '2px solid #d3d3d3',
                             borderRadius: '25px 0% 25px 25px',
                             padding: '10px',
@@ -198,7 +195,7 @@ class Stream_BRD extends Component {
                           align='left'
                           key={index}
                           style={{
-                            backgroundColor:'#42a5f5',
+                            backgroundColor: '#42a5f5',
                             border: '2px solid #d3d3d3',
                             borderRadius: '0% 25px 25px 25px',
                             padding: '10px',
@@ -235,20 +232,20 @@ class Stream_BRD extends Component {
               InputProps={{
                 endAdornment: (
                   <React.Fragment>
-                  <InputAdornment position="end">
-                    <input
-                      accept="image/*"
-                      style={{display:'none'}}
-                      id="contained-button-file"
-                      multiple
-                      type="file"
-                    />
-                    <label htmlFor="contained-button-file">
-                      <IconButton fab variant="raised" component="span">
-                        <AttachFileIcon/>
-                      </IconButton>
-                   </label>
-                 </InputAdornment>
+                    <InputAdornment position='end'>
+                      <input
+                        accept='image/*'
+                        style={{ display: 'none' }}
+                        id='contained-button-file'
+                        multiple
+                        type='file'
+                      />
+                      <label htmlFor='contained-button-file'>
+                        <IconButton fab variant='raised' component='span'>
+                          <AttachFileIcon />
+                        </IconButton>
+                      </label>
+                    </InputAdornment>
                     <InputAdornment position='end'>
                       <IconButton onClick={this.postMessage}>
                         <SendIcon />
