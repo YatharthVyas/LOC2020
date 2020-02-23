@@ -15,12 +15,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import CreateIcon from '@material-ui/icons/Create';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import pink from '@material-ui/core/colors/pink';
 import green from '@material-ui/core/colors/green';
 import TextField from '@material-ui/core/TextField';
-
-import Fade from '@material-ui/core/Fade';
 import $ from 'jquery';
 
 let check = 0;
@@ -68,10 +65,6 @@ var FQANS = props => {
   const [answers, setAnswers] = useState([]);
   const [value, setValue] = React.useState('');
 
-  const [state, setState] = React.useState({
-    open: false,
-    Transition: Fade,
-  });
   const handleSubmit = e => {
     e.preventDefault();
     $.post('http://localhost:5000/forumA', {
@@ -86,7 +79,7 @@ var FQANS = props => {
 
     setValue('');
   };
-  if (check == 0) {
+  if (check === 0) {
     setAnswers(props.location.state.answers);
     ++check;
   }

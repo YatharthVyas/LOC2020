@@ -19,7 +19,7 @@ class Stream_BRD extends Component {
     this.state = {
       socket: null,
       data: null,
-      endpoint: 'http://localhost:5000',
+      endpoint: 'http://192.168.225.219:5000',
       ID: null,
       oldid: null,
       text: '',
@@ -77,9 +77,9 @@ class Stream_BRD extends Component {
 
     var socket = this.state.socket;
 
-    function logger(msg) {
-      $('#logger').text(msg);
-    }
+    // function logger(msg) {
+    //   $('#logger').text(msg);
+    // }
 
     function loadCamera(stream) {
       try {

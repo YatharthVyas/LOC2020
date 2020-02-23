@@ -61,14 +61,6 @@ export default function LoginPage() {
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [isLogged, setLog] = React.useState(false);
-  const setLogFunc = event => {
-    setLog(true);
-  };
-  const [isV, setV] = React.useState(false);
-  const setVFunc = event => {
-    setLog(true);
-  };
   return (
     <Consumer>
       {context => (

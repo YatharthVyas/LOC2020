@@ -15,7 +15,7 @@ class Stream_RCV extends Component {
     this.state = {
       socket: null,
       data: null,
-      endpoint: 'http://localhost:5000',
+      endpoint: 'http://192.168.225.219:5000',
       ID: null,
       oldid: null,
       text: '',
