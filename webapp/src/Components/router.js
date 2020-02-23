@@ -8,6 +8,10 @@ import ChatApp from './chat';
 import Event from './announce';
 import Stream_RCV from './stream_rcv';
 import Stream_BRD from './stream_brd';
+import Donation from './Donation';
+import Profile from './toggleschool';
+import HomePage from './HomePage';
+import Carousel from './institute'; 
 import FQANS from './FQANS';
 import Axios from 'axios';
 class RootRouter extends React.Component {
@@ -47,6 +51,7 @@ class RootRouter extends React.Component {
         <Router>
           <NavBar />
           <Switch>
+            <Route exact path='/' component={HomePage}/>
             <Route exact path='/BRD' component={Stream_BRD} />
             <Route exact path='/RCV' component={Stream_RCV} />
             <Route exact path='/login' component={Login} />
@@ -54,6 +59,9 @@ class RootRouter extends React.Component {
             <Route exact path='/forum' component={Forum} />
             <Route exact path='/announce' component={Event} />
             <Route exact path='/qans' component={FQANS} />
+            <Route exact path='/instituteprofile' component={Profile} />
+            <Route exact path='/institute' component={Carousel} />
+            <Route exact path='/donation' component={Donation} />
           </Switch>
         </Router>
       </Provider>

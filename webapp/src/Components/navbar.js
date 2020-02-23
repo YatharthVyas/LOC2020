@@ -17,6 +17,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
 import ListItem from '@material-ui/core/ListItem';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -176,6 +177,15 @@ function NavBar() {
             </NavLink>
             </List>
         <Divider/>
+        <NavLink className={classes.link} to='/donation'>
+          <ListItem button>
+            <ListItemIcon>
+              <CreditCardIcon/>
+            </ListItemIcon>
+            <Typography>Donate</Typography>
+          </ListItem>
+        </NavLink>
+        <Divider />
       </List>
     </div>)}</Consumer>
   );
@@ -203,7 +213,7 @@ function NavBar() {
                 <Typography variant='h4' className={classes.title}>
                   <NavLink className={classes.linkHeader} to='/'>
                     <Typography variant='h4'>
-                      Masters Information Portal
+                      Gyaan Ashray
                     </Typography>
                   </NavLink>
                 </Typography>
