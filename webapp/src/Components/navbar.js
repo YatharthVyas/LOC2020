@@ -3,7 +3,7 @@
 //setLoggedIn(0);  if no user logged in
 //I wish to use the above function whenever the user is loggedIn, this will display profile & logout instead of login
 
-import React, { useState } from 'react';
+import React from 'react';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -74,9 +74,9 @@ function NavBar() {
 
     setState({ ...state, [side]: open });
   };
-  const [loggedIn, setLoggedIn] = useState(0);
-  setLoggedIn(loggedIn);
   const sideList = side => (
+    <Consumer>
+      {context => (
     <div
       className={classes.list}
       role='presentation'
@@ -100,7 +100,7 @@ function NavBar() {
           </ListItem>
         </NavLink>
         <Divider />
-        {!loggedIn ? (
+        {!context.state.isLoggedIn ? (
           <React.Fragment>
             <NavLink className={classes.link} to='/login'>
               <ListItem button>
@@ -177,7 +177,7 @@ function NavBar() {
             </List>
         <Divider/>
       </List>
-    </div>
+    </div>)}</Consumer>
   );
 
   return (
