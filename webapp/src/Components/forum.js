@@ -4,7 +4,11 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import {Formik,Form} from 'formik';
 import Button from '@material-ui/core/Button';
+import {NavLink} from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,9 +18,11 @@ import Box from '@material-ui/core/Box';
 import { Redirect } from 'react-router-dom';
 import $ from 'jquery';
 function Forum() {
+	const [array,setArray] = React.useState([]);
+
 	const handleSearch = (type) =>{
  		switch(type){
- 			case 'searchTopic': console.log("topic");break;
+ 			case 'searchTopic': console.log("topic");setArray(['Post 1 ','Post 2',' Post 3']);break;	//setArray will fetch from backend
  			case 'searchSubject': console.log("Subject");break;
  			case 'searchQuestion': console.log("Question");break;
  			default: break;
@@ -80,6 +86,21 @@ function Forum() {
 					/> <br/>
 				</Box>
 			<br/><Divider/><br/>
+			<div style={{marginLeft:'10vw'}}>
+				<List>
+				{array.map((value,key)=>(
+						<div key={key}>
+						<NavLink style={{textDecoration: 'none',color: 'black',fontFamily: 'Roboto',}} to="">
+			              <ListItem key={key}>
+			                <ListItemText> {value} </ListItemText>
+			              </ListItem>
+			              <Divider/>
+			            </NavLink>
+	              	</div>
+					))
+				}
+				</List>
+			</div>
 			</div>
 			<div align="center">
 				<Box style={{width:"50vw",border:"2px solid lightgrey",padding:20}}>
