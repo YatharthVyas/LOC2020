@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
@@ -29,6 +31,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function ChatApp() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   const classes = useStyles();
   const [text,setText]=React.useState('');
   const textEdit = (e) =>{
@@ -40,10 +56,28 @@ function ChatApp() {
     if(text!==''){
       sendMessage([...Message,{text:text,sender:0}]);
       setText('');
+      setOpen(true);
     }
   }
   return (
     <Box>
+    <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open}
+        autoHideDuration={2500}
+        onClose={handleClose}
+        message="Message Sent"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
   		<Grid container spacing={0}>
         <Grid item xs={4}>
           <List className={classes.root}>
