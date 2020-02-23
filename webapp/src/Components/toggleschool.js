@@ -95,7 +95,7 @@ class Profile extends Component{
  <h5 className="product__description">{person.Country}</h5>
                 </div>
                 <div className="card__actions">
-                    <a href="/institute_dash"><button className="btn1">View Profile</button></a>
+                    <a href="/institute"><button className="btn1">View Profile</button></a>
                 </div>
             </article>
         </div>    

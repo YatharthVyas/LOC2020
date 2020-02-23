@@ -19,6 +19,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import ListItem from '@material-ui/core/ListItem';
+import BusinessIcon from '@material-ui/icons/Business';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -183,6 +184,15 @@ function NavBar() {
               <CreditCardIcon/>
             </ListItemIcon>
             <Typography>Donate</Typography>
+          </ListItem>
+        </NavLink>
+        <Divider />
+        <NavLink className={classes.link} to='/instituteprofile'>
+          <ListItem button>
+            <ListItemIcon>
+              <BusinessIcon/>
+            </ListItemIcon>
+            <Typography>Affiliated Institutes</Typography>
           </ListItem>
         </NavLink>
         <Divider />
