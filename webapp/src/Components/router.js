@@ -8,6 +8,7 @@ import ChatApp from './chat';
 import Event from './announce';
 import Stream_RCV from './stream_rcv';
 import Stream_BRD from './stream_brd';
+import FQANS from './FQANS';
 import Axios from 'axios';
 class RootRouter extends React.Component {
   state = {
@@ -52,6 +53,7 @@ class RootRouter extends React.Component {
             <Route exact path='/chat' component={ChatApp} />
             <Route exact path='/forum' component={Forum} />
             <Route exact path='/announce' component={Event} />
+            <Route exact path='/qans' component={FQANS} />
           </Switch>
         </Router>
       </Provider>
