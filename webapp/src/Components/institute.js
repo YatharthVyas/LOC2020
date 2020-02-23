@@ -61,7 +61,7 @@ class Carousel extends Component{
                 </header>
                 
                 <div class="card__content">
-                    <h2 class="product__price">SSC:89%, HSC:90%</h2>
+                    <h2 class="product__price">SSC:89%</h2>
                     <p class="product__description"></p>
                 </div>
                 <div class="card__actions">
@@ -74,7 +74,7 @@ class Carousel extends Component{
                 </header>
                 
                 <div class="card__content">
-                    <h2 class="product__price">SSC:90% (State-Topper)</h2>
+                    <h2 class="product__price">SSC:90%</h2>
                     <p class="product__description"></p>
                 </div>
                 <div class="card__actions">
@@ -87,7 +87,7 @@ class Carousel extends Component{
                 </header>
                 
                 <div class="card__content">
-        <h2 class="product__price">JEE:AIR 1788(Girl Topper 2019)</h2>
+        <h2 class="product__price">JEE:AIR 1788</h2>
                     <p class="product__description"></p>
                 </div>
                 <div class="card__actions">
@@ -98,7 +98,8 @@ class Carousel extends Component{
             </div>
             <div></div>
         </div>
-        
+        <br />
+        <br />
         <div className="grid-container">
         
             <div></div>
@@ -106,7 +107,7 @@ class Carousel extends Component{
             <div className="total1">
             <h3 className="personname2">Overall Statistics</h3>
             <h5 className="persontitle2">This is a line graph of the statistical information</h5>
-            {Line}    
+           <img   src={Line} alt='Profile Photo'/>  
             </div>
             <div></div>
         </div>
