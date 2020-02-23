@@ -15,7 +15,7 @@ class Stream_RCV extends Component {
     this.state = {
       socket: null,
       data: null,
-      endpoint: 'http://localhost:5000',
+      endpoint: 'http://192.168.225.219:5000',
       ID: null,
       oldid: null,
       text: '',
@@ -87,16 +87,34 @@ class Stream_RCV extends Component {
         <div style={{ display: 'flex' }}>
           <div style={{ flex: '50%' }}>
             <img
-              alt="Video Chat"
+              alt='Video Chat'
               src={this.state.data}
               style={{ width: '720px', height: '480px' }}
             ></img>
             <br></br>
             <br />
-            <input onChange={this.handleChange} name='ID' type='text' style={{height:35,borderRadius:5,border:"1px solid lightgrey",padding:5}}></input>
+            <input
+              onChange={this.handleChange}
+              name='ID'
+              type='text'
+              style={{
+                height: 35,
+                borderRadius: 5,
+                border: '1px solid lightgrey',
+                padding: 5,
+              }}
+            ></input>
             <button
               onClick={this.startStream}
-              style={{ marginLeft: 10, height: 45, width: 100, backgroundColor:'#651fff',color:'white',border:'1px solid black',borderRadius:5 }}
+              style={{
+                marginLeft: 10,
+                height: 45,
+                width: 100,
+                backgroundColor: '#651fff',
+                color: 'white',
+                border: '1px solid black',
+                borderRadius: 5,
+              }}
             >
               Start
             </button>
@@ -112,7 +130,7 @@ class Stream_RCV extends Component {
                           align='right'
                           key={index}
                           style={{
-                            backgroundColor:'#a5d6a7',
+                            backgroundColor: '#a5d6a7',
                             border: '2px solid #d3d3d3',
                             borderRadius: '25px 0% 25px 25px',
                             padding: '10px',
@@ -138,7 +156,7 @@ class Stream_RCV extends Component {
                           align='left'
                           key={index}
                           style={{
-                            backgroundColor:'#42a5f5',
+                            backgroundColor: '#42a5f5',
                             border: '2px solid #d3d3d3',
                             borderRadius: '0% 25px 25px 25px',
                             padding: '10px',
@@ -175,20 +193,20 @@ class Stream_RCV extends Component {
               InputProps={{
                 endAdornment: (
                   <React.Fragment>
-                  <InputAdornment position="end">
-                    <input
-                      accept="image/*"
-                      style={{display:'none'}}
-                      id="contained-button-file"
-                      multiple
-                      type="file"
-                    />
-                    <label htmlFor="contained-button-file">
-                      <IconButton fab variant="raised" component="span">
-                        <AttachFileIcon/>
-                      </IconButton>
-                   </label>
-                  </InputAdornment>
+                    <InputAdornment position='end'>
+                      <input
+                        accept='image/*'
+                        style={{ display: 'none' }}
+                        id='contained-button-file'
+                        multiple
+                        type='file'
+                      />
+                      <label htmlFor='contained-button-file'>
+                        <IconButton fab variant='raised' component='span'>
+                          <AttachFileIcon />
+                        </IconButton>
+                      </label>
+                    </InputAdornment>
                     <InputAdornment position='end'>
                       <IconButton onClick={this.postMessage}>
                         <SendIcon />
