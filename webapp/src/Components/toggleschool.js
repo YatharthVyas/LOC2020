@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './mystyles.css';
 import Backdrop from '@material-ui/core/Backdrop';
-
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import TextField from '@material-ui/core/TextField';
@@ -77,12 +77,12 @@ class Profile extends Component{
     
     let ngos = (
 <div>
-    
+      <Grid container spacing={2}>
 {filtered.map((person)=>{
 
  return(
 
-  <div className="grid">
+  <Grid item xs={4}>
             <article className="card product-item">
                 <header className="card__header">
  <h3 className="product__title">{person.name}</h3>
@@ -98,12 +98,13 @@ class Profile extends Component{
                     <a href="/institute"><button className="btn1">View Profile</button></a>
                 </div>
             </article>
-        </div>    
+        </Grid>   
         
   
  );
  
 })}
+</Grid>
 </div>
 
 )
